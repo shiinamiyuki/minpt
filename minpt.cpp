@@ -949,7 +949,7 @@ public:
         }
     }
 
-    BSDF *getBSDF() const {
+    BSDF *getBSDF() const override {
         return bsdf.get();
     }
 
@@ -1336,7 +1336,7 @@ class BVHAccelerator : public Accelerator {
                 if (b == nBuckets) {
                     b = nBuckets - 1;
                 }
-                return b < splitBuckets;
+                return b <= splitBuckets;
             });
             auto ret = nodes.size();
             nodes.emplace_back();
